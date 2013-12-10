@@ -1,8 +1,9 @@
 var tick = {};
 
-tick.logEntry = {};
-tick.logEntry.tick = 0;
-tick.logEntry.action = "";
+tick.logEntry = function(tick,action) {
+	this.tick = tick;
+	this.action = action;
+};
 
 tick.player = {};
 tick.player.ui = {};
@@ -16,21 +17,21 @@ tick.player.combat = false;
 tick.player.logs = [];
 tick.player.currentTick = 0;
 tick.player.getInitiative = function() {
-	tick.player.initiative = prompt("Initiative");
+	tick.player.initiative = parseInt(prompt("Initiative"));
 	tick.player.ui.initiative.innerHTML = "Initiative: " + tick.player.initiative;
 	tick.local.obj.initiative = tick.player.initiative;
 	localStorage[tick.local.key] = JSON.stringify(tick.local.obj);
 };
 
 tick.player.getReactionSpeed = function() {
-	tick.player.reactionSpeed = prompt("Reaction Speed");
+	tick.player.reactionSpeed = parseInt(prompt("Reaction Speed"));
 	tick.player.ui.reactionSpeed.innerHTML = "Reaction Speed: " + tick.player.reactionSpeed;
 	tick.local.obj.reactionSpeed = tick.player.reactionSpeed;
 	localStorage[tick.local.key] = JSON.stringify(tick.local.obj);
 };
 
 tick.player.getWeaponSpeed = function() {
-	tick.player.weaponSpeed = prompt("Weapon Speed");
+	tick.player.weaponSpeed = parseInt(prompt("Weapon Speed"));
 	tick.player.ui.weaponSpeed.innerHTML = "Weapon Speed: " + tick.player.weaponSpeed;
 	tick.local.obj.weaponSpeed = tick.player.weaponSpeed;
 	localStorage[tick.local.key] = JSON.stringify(tick.local.obj);
@@ -39,15 +40,23 @@ tick.player.getWeaponSpeed = function() {
 tick.player.startCombat = function() {
 	if(tick.player.combat) {
 	}
+	var t = 0 - tick.player.initiative;
+	tick.player.currentTick = t;
 	tick.player.combat = true;
-	tick.player.currentTick = 0 - tick.player.initiative;
-	tick.player.ui.currentTick.innerHTML = "Current Tick: " + tick.player.currentTick;
-	tick.local.obj.currentTick = tick.player.currentTick;
 	tick.local.obj.combat = tick.player.combat;
+	var e = new tick.logEntry(t,"Initiative");
+	tick.player.logs.push(e);
+	tick.player.addLogEntry(e);
 	tick.local.save();
 };
 
 tick.player.declareAction = function() {
+	var a = tick.player.ui.action.selectedOptions[0].value;
+	var action = tick.actions[a];
+	var ticks = tick.player.currentTick + eval(action.ticks);
+	tick.player.currentTick = ticks;
+	var e = new tick.logEntry(ticks,action.name);
+	tick.player.addLogEntry(e);
 };
 
 tick.player.addLogEntry = function(log) {
