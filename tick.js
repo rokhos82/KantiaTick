@@ -38,16 +38,20 @@ tick.player.getWeaponSpeed = function() {
 };
 
 tick.player.startCombat = function() {
-	if(tick.player.combat) {
+	if(!tick.player.combat) {
+		var t = 0 - tick.player.initiative;
+		tick.player.currentTick = t;
+		tick.player.combat = true;
+		var e = new tick.logEntry(t,"Initiative");
+		tick.player.logs.push(e);
+		tick.player.addLogEntry(e);
+		
+		tick.local.obj.combat = tick.player.combat;
+		tick.local.obj.currentTick = t;
+		tick.local.obj.log = [];
+		tick.local.obj.log.push(e);
+		tick.local.save();
 	}
-	var t = 0 - tick.player.initiative;
-	tick.player.currentTick = t;
-	tick.player.combat = true;
-	tick.local.obj.combat = tick.player.combat;
-	var e = new tick.logEntry(t,"Initiative");
-	tick.player.logs.push(e);
-	tick.player.addLogEntry(e);
-	tick.local.save();
 };
 
 tick.player.declareAction = function() {
@@ -57,6 +61,9 @@ tick.player.declareAction = function() {
 	tick.player.currentTick = ticks;
 	var e = new tick.logEntry(ticks,action.name);
 	tick.player.addLogEntry(e);
+	tick.local.obj.log.push(e);
+	tick.local.obj.currentTick = e.ticks;
+	tick.local.save();
 };
 
 tick.player.addLogEntry = function(log) {
@@ -106,6 +113,7 @@ tick.playerMode = function() {
 	tick.root.appendChild(h);
 
 	tick.player.combat = tick.local.obj.combat;
+	tick.player.log = tick.local.obj.log;
 
 	var button = document.createElement("button");
 	var t = document.createTextNode("Change Mode");
@@ -211,8 +219,8 @@ tick.playerMode = function() {
 	tick.root.appendChild(d);
 	tick.player.ui.log = d;
 	if(tick.player.combat) {
-		for(var l in tick.player.logs) {
-			var log = tick.player.logs[l];
+		for(var l in tick.player.log) {
+			var log = tick.player.log[l];
 			tick.player.addLogEntry(log);
 		}
 	}
