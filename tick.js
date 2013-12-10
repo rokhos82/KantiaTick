@@ -75,7 +75,7 @@ tick.player.addLogEntry = function(log) {
 	row.appendChild(t);
 	row.appendChild(a);
 
-	d.appendChild(row);
+	d.insertBefore(row,d.firstChild);
 };
 
 tick.changeMode = function() {
