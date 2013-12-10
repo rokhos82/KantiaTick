@@ -16,6 +16,8 @@ tick.player.weaponSpeed = 0;
 tick.player.combat = false;
 tick.player.logs = [];
 tick.player.currentTick = 0;
+tick.player.offensivePenalty = 0;
+tick.player.defensivePenalty = 0;
 tick.player.getInitiative = function() {
 	tick.player.initiative = parseInt(prompt("Initiative"));
 	tick.player.ui.initiative.innerHTML = "Initiative: " + tick.player.initiative;
@@ -61,8 +63,11 @@ tick.player.declareAction = function() {
 	tick.player.currentTick = ticks;
 	var e = new tick.logEntry(ticks,action.name);
 	tick.player.addLogEntry(e);
+
 	tick.local.obj.log.push(e);
 	tick.local.obj.currentTick = e.ticks;
+	tick.local.obj.offensivePenalty = tick.player.offensivePenalty;
+	tick.local.obj.defensivePenalty = tick.player.defensivePenalty;
 	tick.local.save();
 };
 
