@@ -71,6 +71,20 @@ tick.player.declareAction = function() {
 	tick.local.save();
 };
 
+tick.player.delayAction = function() {
+	alert("Delayed");
+	var ticks = parseInt(tick.player.currentTick) + 5;
+	tick.player.currentTick = ticks;
+	var e = new tick.logEntry(ticks,"delayed");
+	tick.player.addLogEntry(e);
+
+	tick.local.obj.log.push(e);
+	tick.local.obj.currentTick = e.ticks;
+	tick.local.obj.offensivePenalty = tick.player.offensivePenalty;
+	tick.local.obj.defensivePenalty = tick.player.defensivePenalty;
+	tick.local.save();
+}
+
 tick.player.addLogEntry = function(log) {
 	var d = tick.player.ui.log;
 
@@ -218,6 +232,12 @@ tick.playerMode = function() {
 	var t = document.createTextNode("Declare!");
 	button.appendChild(t);
 	button.onclick = tick.player.declareAction;
+	d.appendChild(button);
+
+	var button = document.createElement("button");
+	var t = document.createTextNode("Delay");
+	button.appendChild(t);
+	button.onclick = tick.player.delayAction;
 	d.appendChild(button);
 
 	var d = document.createElement("table");
