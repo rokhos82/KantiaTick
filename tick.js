@@ -259,7 +259,6 @@ tick.root = null;
 
 tick.initialize = function(rootId) {	
 	tick.root = document.getElementById(rootId);
-	tick.reset();
 	tick.local.obj = {};
 	tick.local.load();
 	tick.createInterface();
