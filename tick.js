@@ -72,7 +72,6 @@ tick.player.declareAction = function() {
 };
 
 tick.player.delayAction = function() {
-	alert("Delayed");
 	var ticks = parseInt(tick.player.currentTick) + 5;
 	tick.player.currentTick = ticks;
 	var e = new tick.logEntry(ticks,"delayed");
