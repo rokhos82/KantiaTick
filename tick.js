@@ -105,6 +105,8 @@ tick.local.key = "kantiatick";
 tick.local.obj = undefined;
 
 tick.local.save = function() {
+	tick.local.obj.initiative = tick.player.initiative;
+	tick.local.obj.currentTick = tick.player.currentTick;
 	localStorage[tick.local.key] = JSON.stringify(tick.local.obj);
 };
 
@@ -130,7 +132,7 @@ tick.createInterface = function() {
 	var div = new tick.ui.div(area1.node,"tick_div");
 	var row1 = new tick.ui.div(div.node,"tick_row");
 	var initiativeLabel = new tick.ui.label(row1.node,"tick_label","Initiative:");
-	var initiativeInput = new tick.ui.input(row1.node,"tick_input","number",0,{"min":"0"},function() { tick.player.initiative = tick.player.ui.initiative.getValue(); });
+	var initiativeInput = new tick.ui.input(row1.node,"tick_input","number",0,{"min":"0"},function() { tick.player.initiative = tick.player.ui.initiative.getValue(); tick.local.save(); });
 	tick.player.ui.initiative = initiativeInput;
 	var row2 = new tick.ui.div(div.node,"tick_row");
 	var reactionLabel = new tick.ui.label(row2.node,"tick_label","Reaction Speed:");

@@ -20,5 +20,5 @@ tick.actions.parry = new tick.action("Parry","tick.player.reactionSpeed + tick.p
 tick.actions.sidestep = new tick.action("Sidestep","tick.player.reactionSpeed + 2;");
 tick.actions.escape = new tick.action("Escape","tick.player.reactionSpeed + 2;");
 tick.actions.disengage = new tick.action("Disengage","tick.player.reactionSpeed;");
-tick.actions.turndisengage = new tick.action("Turn and Disengag","tick.player.reactionSpeed;");
+tick.actions.turndisengage = new tick.action("Turn and Disengage","tick.player.reactionSpeed;");
 tick.actions.escapeinterrupt = new tick.action("Escape Interrupt","tick.player.reactionSpeed + 2;");
