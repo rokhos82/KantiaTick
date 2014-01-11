@@ -1,10 +1,12 @@
+/* http://colorschemedesigner.com/#3L61Tw0w0w0w0 */
+
 body {
 	width: 700px;
+	background-color: #9F3ED5;
 }
 
 div.tick_div {
 	display: inline-block;
-	border: 1px solid #000000;
 	padding: 2px;
 	margin: 2px;
 	vertical-align: top;
@@ -18,6 +20,11 @@ div.tick_row {
 button.tick_fullwidth {
 	display: inline-block;
 	width: 100%;
+	background-color: #3614AF;
+	border: 3px solid #200772;
+	border-radius: 10px;
+	box-shadow: 5px 5px 6px #FFFF00;
+	color: #E6399B;
 }
 
 button.tick_squareBig {
@@ -25,8 +32,13 @@ button.tick_squareBig {
 	float: left;
 	margin: 5px;
 	padding: 5px;
-	width: 70px;
+	width: 80px;
 	height: 70px;
+	background-color: #3614AF;
+	border: 3px solid #200772;
+	border-radius: 10px;
+	box-shadow: 5px 5px 6px #FFFF00;
+	color: #E6399B;
 }
 
 span.tick_penalty_label {
@@ -37,6 +49,10 @@ span.tick_penalty_label {
 	font-size: 10pt;
 	text-align: center;
 	font-variant: small-caps;
+	background-color: #7109AA;
+	border: 3px solid #48036F;
+	border-radius: 10px;
+	box-shadow: 5px 5px 6px #FFFF00;
 }
 
 span.tick_penalty {
@@ -48,6 +64,10 @@ span.tick_penalty {
 	font-size: 44pt;
 	text-align: center;
 	vertical-align: center;
+	background-color: #7109AA;
+	border: 3px solid #48036F;
+	border-radius: 10px;
+	box-shadow: 5px 5px 6px #FFFF00;
 }
 
 span.tick_offPenalty {
@@ -65,26 +85,48 @@ span.tick_actionTick {
 	width: 250px;
 	text-align: center;
 	vertical-align: center;
+	background-color: #7109AA;
+	border: 3px solid #48036F;
+	border-radius: 10px;
+	box-shadow: 5px 5px 6px #FFFF00;
 }
 
 span.tick_actionName {
 	display: block;
 	width: 250px;
 	text-align: center;
+	background-color: #7109AA;
+	border: 3px solid #48036F;
+	border-radius: 10px;
+	box-shadow: 5px 5px 6px #FFFF00;
 }
 
 label.tick_label {
 	display: inline-block;
 	width: 120px;
 	text-align: right;
+	background-color: #7109AA;
+	border: 3px solid #48036F;
+	border-radius: 10px;
+	box-shadow: 5px 5px 6px #FFFF00;
 }
 
 input.tick_input {
 	margin-left: 5px;
 	width: 50px;
+	background-color: #3614AF;
+	border: 3px solid #200772;
+	border-radius: 10px;
+	box-shadow: 5px 5px 6px #FFFF00;
+	color: #E6399B;
 }
 
 button.tick_startCombat {
 	height: 82px;
 	width: 100%;
+	background-color: #3614AF;
+	border: 3px solid #200772;
+	border-radius: 10px;
+	box-shadow: 5px 5px 6px #FFFF00;
+	color: #E6399B;
 }
