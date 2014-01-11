@@ -5,7 +5,11 @@ tick.ui.functions.setClass = function(klasses) {
 	if(klasses && typeof(klasses) == "string") {
 		this.node.setAttribute("class",klasses);
 	}
-}
+};
+
+tick.ui.functions.getValue = function() {
+	return this.node.value;
+};
 
 // DIV element -------------------------------------------------------------------------------------
 tick.ui.div = function(root,klass) {
@@ -43,6 +47,7 @@ tick.ui.input = function(root,type,action) {
 	this.root.appendChild(this.node);
 };
 tick.ui.input.prototype.setClass = tick.ui.functions.setClass;
+tick.ui.input.prototype.getValue = tick.ui.functions.getValue;
 
 // SPAN element ------------------------------------------------------------------------------------
 tick.ui.span = function(root,klass,text) {

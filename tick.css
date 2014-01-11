@@ -6,6 +6,10 @@ div.tick_div {
 	vertical-align: top;
 }
 
+div.tick_row {
+	display: block;
+}
+
 button.tick_square64 {
 	display: inline-block;
 	margin: 2px;
@@ -18,18 +22,30 @@ span.tick_penalty {
 	width: 64px;
 	height: 64px;
 	display: block;
+	font-size: 40pt;
+	text-align: center;
+	vertical-align: center;
 }
 
 span.tick_offPenalty {
-	background-color: #ff0000;
+	color: #ff0000;
 }
 
 span.tick_defPenalty {
-	background-color: #0000ff;
+	color: #0000ff;
 }
 
 span.tick_actionTick {
 	display: block;
+	font-size: 80pt;
 	height: 128px;
 	width: 128px;
+	text-align: center;
+	vertical-align: center;
+}
+
+span.tick_actionName {
+	display: block;
+	width: 128px;
+	text-align: center;
 }

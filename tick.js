@@ -9,8 +9,6 @@ tick.logEntry = function(tick,action) {
 // Player Handler ----------------------------------------------------------------------------------
 tick.player = {};
 tick.player.ui = {};
-tick.player.ui.initiative = undefined;
-tick.player.ui.reactionSpeed = undefined;
 tick.player.name = undefined;
 tick.player.initiative = undefined;
 tick.player.reactionSpeed = 5;
@@ -132,20 +130,32 @@ tick.initialize = function(rootId) {
 };
 
 tick.createInterface = function() {
-	var div = new tick.ui.div(tick.root,"tick_div");
-	var initiativeLabel = new tick.ui.label(div.node,"Initiative");
-	var initiativeInput = new tick.ui.input(div.node,"text",function() { return false; });
-	var reactionLabel = new tick.ui.label(div.node,"Reaction Speed:");
-	var reactionInput = new tick.ui.input(div.node,"text",function() { return false; });
+	var area1 = new tick.ui.div(tick.root,"tick_row");
+	var div = new tick.ui.div(area1.node,"tick_div");
+	var row1 = new tick.ui.div(div.node,"tick_row");
+	var initiativeLabel = new tick.ui.label(row1.node,"Initiative");
+	var initiativeInput = new tick.ui.input(row1.node,"text",function() { tick.player.initiative = tick.player.ui.initiative.getValue(); });
+	tick.player.ui.initiative = initiativeInput;
+	var row2 = new tick.ui.div(div.node,"tick_row");
+	var reactionLabel = new tick.ui.label(row2.node,"Reaction Speed:");
+	var reactionInput = new tick.ui.input(row2.node,"text",function() { tick.player.reactionSpeed = tick.player.ui.reactionSpeed.getValue(); });
+	tick.player.ui.reactionSpeed = reactionInput;
+	var row3 = new tick.ui.div(div.node,"tick_row");
+	var weaponLabel = new tick.ui.label(row3.node,"Weapon Speed:");
+	var weaponInput = new tick.ui.input(row3.node,"text",function() { tick.player.weaponSpeed = tick.player.ui.weaponSpeed.getValue(); });
+	tick.player.ui.weaponSpeed = weaponInput;
+	var row4 = new tick.ui.div(div.node,"tick_row");
+	var startCombat = new tick.ui.button(row4.node,false,"Start Combat",function() { tick.player.startCombat(); });
 
-	var div = new tick.ui.div(tick.root,"tick_div");
+	var div = new tick.ui.div(area1.node,"tick_div");
 	var offensivePenalty = new tick.ui.span(div.node,"tick_penalty tick_offPenalty","0");
 	var defensivePenalty = new tick.ui.span(div.node,"tick_penalty tick_defPenalty","0");
 
-	var div = new tick.ui.div(tick.root,"tick_div");
+	var div = new tick.ui.div(area1.node,"tick_div");
 	var nextActionTick = new tick.ui.span(div.node,"tick_actionTick","0");
+	var nextActionName = new tick.ui.span(div.node,"tick_actionName","Ready");
 
-	var div = new tick.ui.div(tick.root,"tick_div");
+	var div = new tick.ui.div(tick.root,"tick_row");
 	var refocus = new tick.ui.button(div.node,"tick_square64","Refocus",function() { alert("Focus!"); });
 	var attack = new tick.ui.button(div.node,"tick_square64","Attack",function() { alert("Attack!"); });
 	var engageAndAttack = new tick.ui.button(div.node,"tick_square64","Engage and Attack",function() { alert("Stop preparing; just go!"); });
