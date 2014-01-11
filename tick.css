@@ -1,3 +1,7 @@
+body {
+	width: 800px;
+}
+
 div.tick_div {
 	display: inline-block;
 	border: 1px solid #000000;
@@ -8,21 +12,39 @@ div.tick_div {
 
 div.tick_row {
 	display: block;
+	width: 100%;
 }
 
-button.tick_square64 {
+button.tick_fullwidth {
 	display: inline-block;
-	margin: 2px;
-	padding: 2px;
+	width: 100%;
+}
+
+button.tick_squareBig {
+	display: inline;
+	float: left;
+	margin: 5px;
+	padding: 5px;
+	width: 70px;
+	height: 70px;
+}
+
+span.tick_penalty_label {
+	margin: 0px;
+	padding: 0px;
 	width: 64px;
-	height: 64px;
+	display: block;
+	font-size: 10pt;
+	text-align: center;
 }
 
 span.tick_penalty {
+	margin: 0px;
+	padding: 0px;
 	width: 64px;
 	height: 64px;
 	display: block;
-	font-size: 40pt;
+	font-size: 44pt;
 	text-align: center;
 	vertical-align: center;
 }
@@ -48,4 +70,15 @@ span.tick_actionName {
 	display: block;
 	width: 128px;
 	text-align: center;
+}
+
+label.tick_label {
+	display: inline-block;
+	width: 100px;
+	text-align: right;
+}
+
+input.tick_input {
+	margin-left: 5px;
+	width: 50px;
 }

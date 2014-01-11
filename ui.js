@@ -11,6 +11,10 @@ tick.ui.functions.getValue = function() {
 	return this.node.value;
 };
 
+tick.ui.functions.setText = function(text) {
+	var textNode = document.createTextNode(text);
+};
+
 // DIV element -------------------------------------------------------------------------------------
 tick.ui.div = function(root,klass) {
 	this.node = document.createElement("div");
@@ -22,7 +26,7 @@ tick.ui.div = function(root,klass) {
 tick.ui.div.prototype.setClass = tick.ui.functions.setClass;
 
 // LABEL element -----------------------------------------------------------------------------------
-tick.ui.label = function(root,text) {
+tick.ui.label = function(root,klass,text) {
 	this.node = document.createElement("label");
 	
 	this.text = text;
@@ -31,11 +35,14 @@ tick.ui.label = function(root,text) {
 	
 	this.root = root;
 	this.root.appendChild(this.node);
+
+	this.setClass(klass);
 };
 tick.ui.label.prototype.setClass = tick.ui.functions.setClass;
+tick.ui.label.prototype.setText = tick.ui.functions.setText;
 
 // INPUT element -----------------------------------------------------------------------------------
-tick.ui.input = function(root,type,action) {
+tick.ui.input = function(root,klass,type,defValue,attr,action) {
 	this.node = document.createElement("input");
 	this.node.type = type;
 
@@ -43,8 +50,17 @@ tick.ui.input = function(root,type,action) {
 	this.node.ui = this;
 	this.node.setAttribute("onblur","this.ui.action();");
 
+	for(var k in attr) {
+		var v = attr[k];
+		this.node.setAttribute(k,v);
+	}
+
+	this.node.value = defValue;
+
 	this.root = root;
 	this.root.appendChild(this.node);
+
+	this.setClass(klass);
 };
 tick.ui.input.prototype.setClass = tick.ui.functions.setClass;
 tick.ui.input.prototype.getValue = tick.ui.functions.getValue;
@@ -63,6 +79,7 @@ tick.ui.span = function(root,klass,text) {
 	this.setClass(klass);
 };
 tick.ui.span.prototype.setClass = tick.ui.functions.setClass;
+tick.ui.span.prototype.setText = tick.ui.functions.setText;
 
 // BUTTON element ----------------------------------------------------------------------------------
 tick.ui.button = function(root,klass,text,action) {
@@ -82,3 +99,4 @@ tick.ui.button = function(root,klass,text,action) {
 	this.setClass(klass);
 }
 tick.ui.button.prototype.setClass = tick.ui.functions.setClass;
+tick.ui.button.prototype.setText = tick.ui.functions.setText;
