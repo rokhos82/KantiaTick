@@ -52,15 +52,15 @@ tick.player.startCombat = function() {
 	}
 };
 
-tick.player.declareAction = function(a) {
-	var action = tick.actions[a];
+tick.player.declareAction = function(action) {
 	var ticks = tick.player.currentTick + eval(action.ticks);
 	tick.player.currentTick = ticks;
+	tick.player.ui.initiativeTick.setText(ticks);
+	tick.player.ui.nextActionName.setText(action.name);
 
+	tick.player.offensivePenalty = tick.player.offensivePenalty - eval(action.offensivePenalty);
+	tick.player.defensivePenalty = tick.player.defensivePenalty - eval(action.defensivePenalty);
 	
-	tick.local.obj.currentTick = tick.player.currentTick;
-	tick.local.obj.offensivePenalty = tick.player.offensivePenalty - eval(action.offPenalty);
-	tick.local.obj.defensivePenalty = tick.player.defensivePenalty - eval(action.defPenalty);
 	tick.local.save();
 };
 
@@ -133,11 +133,11 @@ tick.createInterface = function() {
 	tick.player.ui.initiative = initiativeInput;
 	var row2 = new tick.ui.div(div.node,"tick_row");
 	var reactionLabel = new tick.ui.label(row2.node,"tick_label","Reaction Speed:");
-	var reactionInput = new tick.ui.input(row2.node,"tick_input","number",0,{"min":"0"},function() { tick.player.reactionSpeed = tick.player.ui.reactionSpeed.getValue(); });
+	var reactionInput = new tick.ui.input(row2.node,"tick_input","number",0,{"min":"0"},function() { tick.player.reactionSpeed = parseInt(tick.player.ui.reactionSpeed.getValue()); });
 	tick.player.ui.reactionSpeed = reactionInput;
 	var row3 = new tick.ui.div(div.node,"tick_row");
 	var weaponLabel = new tick.ui.label(row3.node,"tick_label","Weapon Speed:");
-	var weaponInput = new tick.ui.input(row3.node,"tick_input","number",0,{"min":"0"},function() { tick.player.weaponSpeed = tick.player.ui.weaponSpeed.getValue(); });
+	var weaponInput = new tick.ui.input(row3.node,"tick_input","number",0,{"min":"0"},function() { tick.player.weaponSpeed = parseInt(tick.player.ui.weaponSpeed.getValue()); });
 	tick.player.ui.weaponSpeed = weaponInput;
 	var row4 = new tick.ui.div(div.node,"tick_row");
 	var startCombat = new tick.ui.button(row4.node,"tick_startCombat","Start Combat",function() { tick.player.startCombat(); });
@@ -151,12 +151,14 @@ tick.createInterface = function() {
 	var div = new tick.ui.div(area1.node,"tick_div");
 	var actionTickLabel = new tick.ui.span(div.node,"tick_actionName","Next Action Tick");
 	var nextActionTick = new tick.ui.span(div.node,"tick_actionTick","0");
-	var nextActionName = new tick.ui.span(div.node,"tick_actionName","Ready");
+	var nextActionName = new tick.ui.span(div.node,"tick_actionName","Select An Action");
 	tick.player.ui.initiativeTick = nextActionTick;
+	tick.player.ui.nextActionName = nextActionName;
 
 	var div = new tick.ui.div(tick.root,"tick_row");
 	for(var a in tick.actions) {
-		var button = new tick.ui.button(div.node,"tick_squareBig",tick.actions[a].name,function() { tick.player.declareAction(a); });
+		var action = tick.actions[a];
+		var button = new tick.ui.button(div.node,"tick_squareBig",tick.actions[a].name,function() { tick.player.declareAction(action); });
 	}
 }
 
