@@ -13,6 +13,14 @@ tick.ui.functions.getValue = function() {
 
 tick.ui.functions.setText = function(text) {
 	var textNode = document.createTextNode(text);
+	this.clearChildren();
+	this.node.appendChild(textNode);
+};
+
+tick.ui.functions.clearChildren = function() {
+	while(this.node.firstChild) {
+		this.node.removeChild(this.node.firstChild);
+	}
 };
 
 // DIV element -------------------------------------------------------------------------------------
@@ -40,6 +48,7 @@ tick.ui.label = function(root,klass,text) {
 };
 tick.ui.label.prototype.setClass = tick.ui.functions.setClass;
 tick.ui.label.prototype.setText = tick.ui.functions.setText;
+tick.ui.label.prototype.clearChildren = tick.ui.functions.clearChildren;
 
 // INPUT element -----------------------------------------------------------------------------------
 tick.ui.input = function(root,klass,type,defValue,attr,action) {
@@ -80,6 +89,7 @@ tick.ui.span = function(root,klass,text) {
 };
 tick.ui.span.prototype.setClass = tick.ui.functions.setClass;
 tick.ui.span.prototype.setText = tick.ui.functions.setText;
+tick.ui.span.prototype.clearChildren = tick.ui.functions.clearChildren;
 
 // BUTTON element ----------------------------------------------------------------------------------
 tick.ui.button = function(root,klass,text,action) {
@@ -100,3 +110,4 @@ tick.ui.button = function(root,klass,text,action) {
 }
 tick.ui.button.prototype.setClass = tick.ui.functions.setClass;
 tick.ui.button.prototype.setText = tick.ui.functions.setText;
+tick.ui.button.prototype.clearChildren = tick.ui.functions.clearChildren;

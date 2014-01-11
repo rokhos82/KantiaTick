@@ -1,5 +1,5 @@
 body {
-	width: 800px;
+	width: 700px;
 }
 
 div.tick_div {
@@ -32,16 +32,17 @@ button.tick_squareBig {
 span.tick_penalty_label {
 	margin: 0px;
 	padding: 0px;
-	width: 64px;
+	width: 128px;
 	display: block;
 	font-size: 10pt;
 	text-align: center;
+	font-variant: small-caps;
 }
 
 span.tick_penalty {
 	margin: 0px;
 	padding: 0px;
-	width: 64px;
+	width: 128px;
 	height: 64px;
 	display: block;
 	font-size: 44pt;
@@ -61,24 +62,29 @@ span.tick_actionTick {
 	display: block;
 	font-size: 80pt;
 	height: 128px;
-	width: 128px;
+	width: 250px;
 	text-align: center;
 	vertical-align: center;
 }
 
 span.tick_actionName {
 	display: block;
-	width: 128px;
+	width: 250px;
 	text-align: center;
 }
 
 label.tick_label {
 	display: inline-block;
-	width: 100px;
+	width: 120px;
 	text-align: right;
 }
 
 input.tick_input {
 	margin-left: 5px;
 	width: 50px;
+}
+
+button.tick_startCombat {
+	height: 82px;
+	width: 100%;
 }

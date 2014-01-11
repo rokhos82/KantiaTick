@@ -44,14 +44,10 @@ tick.player.startCombat = function() {
 		var t = 0 - tick.player.initiative;
 		tick.player.currentTick = t;
 		tick.player.combat = true;
-		var e = new tick.logEntry(t,"Initiative");
-		tick.player.logs.push(e);
-		tick.player.addLogEntry(e);
+		tick.player.ui.initiativeTick.setText(t);
 		
 		tick.local.obj.combat = tick.player.combat;
 		tick.local.obj.currentTick = t;
-		tick.local.obj.log = [];
-		tick.local.obj.log.push(e);
 		tick.local.save();
 	}
 };
@@ -145,7 +141,7 @@ tick.createInterface = function() {
 	var weaponInput = new tick.ui.input(row3.node,"tick_input","number",0,{"min":"0"},function() { tick.player.weaponSpeed = tick.player.ui.weaponSpeed.getValue(); });
 	tick.player.ui.weaponSpeed = weaponInput;
 	var row4 = new tick.ui.div(div.node,"tick_row");
-	var startCombat = new tick.ui.button(row4.node,false,"Start Combat",function() { tick.player.startCombat(); });
+	var startCombat = new tick.ui.button(row4.node,"tick_startCombat","Start Combat",function() { tick.player.startCombat(); });
 
 	var div = new tick.ui.div(area1.node,"tick_div");
 	var offensivePenalty = new tick.ui.span(div.node,"tick_penalty tick_offPenalty","0");
@@ -156,6 +152,7 @@ tick.createInterface = function() {
 	var div = new tick.ui.div(area1.node,"tick_div");
 	var nextActionTick = new tick.ui.span(div.node,"tick_actionTick","0");
 	var nextActionName = new tick.ui.span(div.node,"tick_actionName","Ready");
+	tick.player.ui.initiativeTick = nextActionTick;
 
 	var div = new tick.ui.div(tick.root,"tick_row");
 	for(var a in tick.actions) {
