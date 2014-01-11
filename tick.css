@@ -1,10 +1,35 @@
-span {
-	margin: 2px;
-	padding: 2px;
+div.tick_div {
+	display: inline-block;
 	border: 1px solid #000000;
+	padding: 2px;
+	margin: 2px;
+	vertical-align: top;
 }
 
-div {
+button.tick_square64 {
+	display: inline-block;
 	margin: 2px;
 	padding: 2px;
+	width: 64px;
+	height: 64px;
+}
+
+span.tick_penalty {
+	width: 64px;
+	height: 64px;
+	display: block;
+}
+
+span.tick_offPenalty {
+	background-color: #ff0000;
+}
+
+span.tick_defPenalty {
+	background-color: #0000ff;
+}
+
+span.tick_actionTick {
+	display: block;
+	height: 128px;
+	width: 128px;
 }

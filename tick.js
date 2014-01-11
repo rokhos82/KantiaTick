@@ -132,6 +132,26 @@ tick.initialize = function(rootId) {
 };
 
 tick.createInterface = function() {
+	var div = new tick.ui.div(tick.root,"tick_div");
+	var initiativeLabel = new tick.ui.label(div.node,"Initiative");
+	var initiativeInput = new tick.ui.input(div.node,"text",function() { return false; });
+	var reactionLabel = new tick.ui.label(div.node,"Reaction Speed:");
+	var reactionInput = new tick.ui.input(div.node,"text",function() { return false; });
+
+	var div = new tick.ui.div(tick.root,"tick_div");
+	var offensivePenalty = new tick.ui.span(div.node,"tick_penalty tick_offPenalty","0");
+	var defensivePenalty = new tick.ui.span(div.node,"tick_penalty tick_defPenalty","0");
+
+	var div = new tick.ui.div(tick.root,"tick_div");
+	var nextActionTick = new tick.ui.span(div.node,"tick_actionTick","0");
+
+	var div = new tick.ui.div(tick.root,"tick_div");
+	var refocus = new tick.ui.button(div.node,"tick_square64","Refocus",function() { alert("Focus!"); });
+	var attack = new tick.ui.button(div.node,"tick_square64","Attack",function() { alert("Attack!"); });
+	var engageAndAttack = new tick.ui.button(div.node,"tick_square64","Engage and Attack",function() { alert("Stop preparing; just go!"); });
+}
+
+tick.createInterfaceOld = function() {
 	tick.player.combat = tick.local.obj.combat;
 	tick.player.log = tick.local.obj.log;
 
