@@ -52,18 +52,15 @@ tick.player.startCombat = function() {
 	}
 };
 
-tick.player.declareAction = function() {
-	var a = tick.player.ui.action.selectedOptions[0].value;
+tick.player.declareAction = function(a) {
 	var action = tick.actions[a];
 	var ticks = tick.player.currentTick + eval(action.ticks);
 	tick.player.currentTick = ticks;
-	var e = new tick.logEntry(ticks,action.name);
-	tick.player.addLogEntry(e);
 
-	tick.local.obj.log.push(e);
-	tick.local.obj.currentTick = e.ticks;
-	tick.local.obj.offensivePenalty = tick.player.offensivePenalty;
-	tick.local.obj.defensivePenalty = tick.player.defensivePenalty;
+	
+	tick.local.obj.currentTick = tick.player.currentTick;
+	tick.local.obj.offensivePenalty = tick.player.offensivePenalty - eval(action.offPenalty);
+	tick.local.obj.defensivePenalty = tick.player.defensivePenalty - eval(action.defPenalty);
 	tick.local.save();
 };
 
@@ -147,18 +144,19 @@ tick.createInterface = function() {
 
 	var div = new tick.ui.div(area1.node,"tick_div");
 	var offensivePenalty = new tick.ui.span(div.node,"tick_penalty tick_offPenalty","0");
-	var offensiveLabel = new tick.ui.span(div.node,"tick_penalty_label","Offense");
+	var offensiveLabel = new tick.ui.span(div.node,"tick_penalty_label","Offense Pen.");
 	var defensivePenalty = new tick.ui.span(div.node,"tick_penalty tick_defPenalty","0");
-	var defensiveLabel = new tick.ui.span(div.node,"tick_penalty_label","Defense");
+	var defensiveLabel = new tick.ui.span(div.node,"tick_penalty_label","Defense Pen.");
 
 	var div = new tick.ui.div(area1.node,"tick_div");
+	var actionTickLabel = new tick.ui.span(div.node,"tick_actionName","Next Action Tick");
 	var nextActionTick = new tick.ui.span(div.node,"tick_actionTick","0");
 	var nextActionName = new tick.ui.span(div.node,"tick_actionName","Ready");
 	tick.player.ui.initiativeTick = nextActionTick;
 
 	var div = new tick.ui.div(tick.root,"tick_row");
 	for(var a in tick.actions) {
-		var button = new tick.ui.button(div.node,"tick_squareBig",tick.actions[a].name,function() { return false; });
+		var button = new tick.ui.button(div.node,"tick_squareBig",tick.actions[a].name,function() { tick.player.declareAction(a); });
 	}
 }
 

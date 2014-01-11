@@ -1,8 +1,8 @@
 /* http://colorschemedesigner.com/#3L61Tw0w0w0w0 */
 
 body {
-	width: 700px;
-	background-color: #9F3ED5;
+	width: 900px;
+	background-color: #2A4480;
 }
 
 div.tick_div {
@@ -20,11 +20,11 @@ div.tick_row {
 button.tick_fullwidth {
 	display: inline-block;
 	width: 100%;
-	background-color: #3614AF;
-	border: 3px solid #200772;
+	background-color: #009999;
+	border: 3px solid #006363;
 	border-radius: 10px;
-	box-shadow: 5px 5px 6px #FFFF00;
-	color: #E6399B;
+	box-shadow: 4px 3px 5px #FFD073;
+	color: #000000;
 }
 
 button.tick_squareBig {
@@ -32,13 +32,18 @@ button.tick_squareBig {
 	float: left;
 	margin: 5px;
 	padding: 5px;
-	width: 80px;
-	height: 70px;
-	background-color: #3614AF;
-	border: 3px solid #200772;
+	width: 90px;
+	height: 80px;
+	background-color: #009999;
+	border: 3px solid #006363;
 	border-radius: 10px;
-	box-shadow: 5px 5px 6px #FFFF00;
-	color: #E6399B;
+	box-shadow: 4px 3px 5px #FFD073;
+	color: #000000;
+	font-size: 12pt;
+}
+
+button.tick_squareBig:hover {
+	background-color: #5CCCCC;
 }
 
 span.tick_penalty_label {
@@ -49,10 +54,12 @@ span.tick_penalty_label {
 	font-size: 10pt;
 	text-align: center;
 	font-variant: small-caps;
-	background-color: #7109AA;
-	border: 3px solid #48036F;
+	background-color: #2040AB;
+	border: 3px solid #06266F;
 	border-radius: 10px;
-	box-shadow: 5px 5px 6px #FFFF00;
+	box-shadow: 4px 3px 5px #FFD073;
+	color: #FFBF40;
+	font-size: 12pt;
 }
 
 span.tick_penalty {
@@ -64,18 +71,17 @@ span.tick_penalty {
 	font-size: 44pt;
 	text-align: center;
 	vertical-align: center;
-	background-color: #7109AA;
-	border: 3px solid #48036F;
+	background-color: #2040AB;
+	border: 3px solid #06266F;
 	border-radius: 10px;
-	box-shadow: 5px 5px 6px #FFFF00;
+	box-shadow: 4px 3px 5px #FFD073;
+	color: #FFBF40;
 }
 
 span.tick_offPenalty {
-	color: #ff0000;
 }
 
 span.tick_defPenalty {
-	color: #0000ff;
 }
 
 span.tick_actionTick {
@@ -85,48 +91,67 @@ span.tick_actionTick {
 	width: 250px;
 	text-align: center;
 	vertical-align: center;
-	background-color: #7109AA;
-	border: 3px solid #48036F;
+	background-color: #2040AB;
+	border: 3px solid #06266F;
 	border-radius: 10px;
-	box-shadow: 5px 5px 6px #FFFF00;
+	box-shadow: 4px 3px 5px #FFD073;
+	color: #FFBF40;
 }
 
 span.tick_actionName {
 	display: block;
 	width: 250px;
 	text-align: center;
-	background-color: #7109AA;
-	border: 3px solid #48036F;
+	background-color: #2040AB;
+	border: 3px solid #06266F;
 	border-radius: 10px;
-	box-shadow: 5px 5px 6px #FFFF00;
+	box-shadow: 4px 3px 5px #FFD073;
+	color: #FFBF40;
 }
 
 label.tick_label {
+	padding: 2px;
 	display: inline-block;
-	width: 120px;
+	width: 150px;
+	padding-right: 5px;
 	text-align: right;
-	background-color: #7109AA;
-	border: 3px solid #48036F;
+	background-color: #2040AB;
+	border: 3px solid #06266F;
 	border-radius: 10px;
-	box-shadow: 5px 5px 6px #FFFF00;
+	box-shadow: 4px 3px 5px #FFD073;
+	color: #FFBF40;
+	font-size: 14pt;
 }
 
 input.tick_input {
+	padding: 2px;
 	margin-left: 5px;
-	width: 50px;
-	background-color: #3614AF;
-	border: 3px solid #200772;
+	width: 75px;
+	background-color: #009999;
+	border: 3px solid #006363;
 	border-radius: 10px;
-	box-shadow: 5px 5px 6px #FFFF00;
-	color: #E6399B;
+	box-shadow: 4px 3px 5px #FFD073;
+	color: #000000;
+	font-size: 14pt;
+	text-align: center;
+}
+
+input.tick_input:focus {
+	background-color: #5CCCCC;
 }
 
 button.tick_startCombat {
+	padding: 10px;
 	height: 82px;
 	width: 100%;
-	background-color: #3614AF;
-	border: 3px solid #200772;
+	background-color: #009999;
+	border: 3px solid #006363;
 	border-radius: 10px;
-	box-shadow: 5px 5px 6px #FFFF00;
-	color: #E6399B;
+	box-shadow: 4px 3px 5px #FFD073;
+	color: #000000;
+	font-size: 20pt;
+}
+
+button.tick_startCombat:hover {
+	background-color: #5CCCCC;
 }
